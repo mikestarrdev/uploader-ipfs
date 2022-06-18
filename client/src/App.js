@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PhotoAlbum from "./components/PhotoAlbum";
 
 function App() {
   const Container = styled.div`
@@ -17,6 +18,7 @@ function App() {
     <>
       <Container>
         <Title>Photo album - Friends, Festivals, Dregs, Ballers</Title>
+        <PhotoAlbum />
       </Container>
     </>
   );
