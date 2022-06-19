@@ -1,5 +1,8 @@
+import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
+import Navbar from "./components/Navbar";
 import PhotoAlbum from "./components/PhotoAlbum";
+import Upload from "./components/Upload";
 
 function App() {
   const Container = styled.div`
@@ -24,9 +27,14 @@ function App() {
   return (
     <>
       <Container>
+        <Navbar />
         <Title>Photo album - Friends, Festivals, Dregs, Ballers</Title>
         <PhotoAlbum />
       </Container>
+
+      <Routes>
+        <Route path="/upload" element={<Upload />} />
+      </Routes>
     </>
   );
 }
