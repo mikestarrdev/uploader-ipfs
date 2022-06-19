@@ -4,18 +4,29 @@ import styled from "styled-components";
 function PhotoAlbum() {
   const Album = styled.div`
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0.5rem;
     align-items: center;
-    width: auto;
-    margin: auto;
-    padding: 1rem;
+    width: 100%;
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 425px) {
+      grid-template-columns: 1fr;
+    }
   `;
 
-  const Photo = styled.div`
+  const PhotoDiv = styled.div`
     border: solid lightgray 2px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0.1rem;
+    /* height: 100%; */
+    width: auto;
   `;
 
   const [photos, setPhotos] = useState();
@@ -36,13 +47,13 @@ function PhotoAlbum() {
 
   const renderPhotos = photos?.map((photo) => {
     return (
-      <Photo>
+      <PhotoDiv>
         <img src={photo.src.small} alt={photo.alt} key={photo.id} />
         <p>
           <strong>Uploaded by:</strong> {photo.photographer} <br />
           <strong>Description:</strong> {photo.alt}
         </p>
-      </Photo>
+      </PhotoDiv>
     );
   });
 
